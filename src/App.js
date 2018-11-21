@@ -1,28 +1,33 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import MenuItem from 'material-ui/MenuItem'
+
+import Counter from './Counter'
+import Navigation from './Navigation/Navigation'
+
+const App = (props) => (
+  <div>
+    <Router>
+      <div>
+        <Navigation
+          title="JSDDL6"
+        >
+          <Link to='/'>
+            <MenuItem>
+              Dashboard
+          </MenuItem>
+          </Link>
+          <Link to='/counter'>
+          <MenuItem>
+          Counter
+          </MenuItem>
+          </Link>
+        </Navigation>
+        <Route path="/counter" component={() => <Counter startNumber={5} />} />
       </div>
-    );
-  }
-}
+    </Router >
+  </div >
+)
 
-export default App;
+export default App
